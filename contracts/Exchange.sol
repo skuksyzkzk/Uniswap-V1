@@ -7,12 +7,12 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import '../interfaces/IExchange.sol';
 import '../interfaces/IFactory.sol';
-contract Exchange is ERC20 {
+contract Exchange is ERC20 { // ERC 20을 상속받음으로서 ERC20토큰으로서 기능 수행 
     IERC20 token;
     IFactory factory;
     // fair가 될 토큰 
     constructor (address _token) ERC20("Kim LP token","KSY-LP"){
-        token = IERC20(_token);
+        token = IERC20(_token);// 여기서 ERC 20의 함수 사용 이런거 위해서 IERC20을 인터페이스로 해서 초기화한것 
         factory = IFactory(msg.sender);
     }
     // transfer 대신 transferFrom 쓰는 이유가 내 토큰이 주체로 옮겨가는게 아니라 이걸 교환하고 싶은 exchanger가 호출하는거니까 payable이여야되고
